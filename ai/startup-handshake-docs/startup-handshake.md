@@ -16,11 +16,11 @@ executable. The ordinary managed launch described below differs from
 sequenceDiagram
     participant Core as OpenTofu Core
     participant Provider as Provider process
-    Core->>Provider: Execute binary; supply environment
+    Core->>Provider: Execute binary with startup environment
     Note over Provider: Check cookie and select provider major version
     Note over Provider: Prepare listener, TLS credentials, and gRPC services
     Provider-->>Core: One flushed stdout handshake line
-    Core->>Provider: Connect to advertised socket; perform mutual TLS
+    Core->>Provider: Connect to advertised socket and perform mutual TLS
     Core->>Provider: Open broker and stdio streams
     Core->>Provider: Provider RPCs, such as GetProviderSchema
     Note over Core,Provider: Provider configuration and resource operations follow
