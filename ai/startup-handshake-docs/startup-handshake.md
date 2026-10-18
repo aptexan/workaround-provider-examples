@@ -12,21 +12,10 @@ executable. The ordinary managed launch described below differs from
 
 ## Sequence
 
-```mermaid
-sequenceDiagram
-    participant Core as OpenTofu Core
-    participant Provider as Provider process
-    Core->>Provider: Execute binary with startup environment
-    Note over Provider: Check cookie and select provider major version
-    Note over Provider: Prepare listener, TLS credentials, and gRPC services
-    Provider-->>Core: One flushed stdout handshake line
-    Core->>Provider: Connect to advertised socket and perform mutual TLS
-    Core->>Provider: Open broker and stdio streams
-    Core->>Provider: Provider RPCs, such as GetProviderSchema
-    Note over Core,Provider: Provider configuration and resource operations follow
-    Core->>Provider: GRPCController.Shutdown
-    Note over Provider: Stop server, release resources, exit process
-```
+![Provider startup sequence from process launch through handshake, mutual TLS, provider RPCs, and shutdown.](startup-sequence.svg)
+
+[Diagram source](startup-sequence.mmd). The SVG is a static image and does not
+require Mermaid support in the Markdown viewer.
 
 The broker and stdio streams can overlap provider RPCs. This diagram is not a
 requirement that every RPC occur serially. A health check is also available, but

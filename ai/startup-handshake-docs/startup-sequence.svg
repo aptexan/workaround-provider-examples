@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="909" viewBox="0 0 1000 909" role="img" aria-labelledby="title desc">
+<title id="title">OpenTofu provider startup sequence</title>
+<desc id="desc">Core launches the provider. The provider checks the cookie, selects a protocol version, prepares services, and prints its handshake. Core connects with mutual TLS, opens supporting streams, issues provider RPCs, and requests shutdown.</desc>
+<rect width="1000" height="909" fill="#ffffff"/>
+<g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#172033" text-anchor="middle">
+<g stroke="#64748b" stroke-width="2" stroke-dasharray="6 6">
+<line x1="150" y1="76" x2="150" y2="889"/>
+<line x1="750" y1="76" x2="750" y2="889"/>
+</g>
+<g fill="#e8efff" stroke="#3556a8" stroke-width="2">
+<rect x="40" y="24" width="220" height="52" rx="6"/>
+<rect x="640" y="24" width="220" height="52" rx="6"/>
+</g>
+<text x="150" y="57" font-weight="bold">OpenTofu Core</text>
+<text x="750" y="57" font-weight="bold">Provider process</text>
+<text x="450" y="133">Execute binary with startup environment</text>
+<path d="M150 147 H750" fill="none" stroke="#3556a8" stroke-width="2"/>
+<path d="M750 147 l-12 -6 v12 z" fill="#3556a8"/>
+<rect x="550" y="180" width="400" height="72" rx="4" fill="#fff5d6" stroke="#b58b29"/>
+<text x="750" y="208">Check cookie and select provider major</text>
+<text x="750" y="232">version</text>
+<rect x="550" y="282" width="400" height="72" rx="4" fill="#fff5d6" stroke="#b58b29"/>
+<text x="750" y="310">Prepare listener, TLS credentials, and</text>
+<text x="750" y="334">gRPC services</text>
+<text x="450" y="402">One flushed stdout handshake line</text>
+<path d="M750 416 H150" fill="none" stroke="#3556a8" stroke-width="2" stroke-dasharray="6 5"/>
+<path d="M150 416 l12 -6 v12 z" fill="#3556a8"/>
+<text x="450" y="467">Connect to advertised socket and perform mutual TLS</text>
+<path d="M150 481 H750" fill="none" stroke="#3556a8" stroke-width="2"/>
+<path d="M750 481 l-12 -6 v12 z" fill="#3556a8"/>
+<text x="450" y="532">Open broker and stdio streams</text>
+<path d="M150 546 H750" fill="none" stroke="#3556a8" stroke-width="2"/>
+<path d="M750 546 l-12 -6 v12 z" fill="#3556a8"/>
+<text x="450" y="597">Provider RPCs, such as GetProviderSchema</text>
+<path d="M150 611 H750" fill="none" stroke="#3556a8" stroke-width="2"/>
+<path d="M750 611 l-12 -6 v12 z" fill="#3556a8"/>
+<rect x="100" y="644" width="700" height="48" rx="4" fill="#fff5d6" stroke="#b58b29"/>
+<text x="450" y="672">Provider configuration and resource operations follow</text>
+<text x="450" y="740">GRPCController.Shutdown</text>
+<path d="M150 754 H750" fill="none" stroke="#3556a8" stroke-width="2"/>
+<path d="M750 754 l-12 -6 v12 z" fill="#3556a8"/>
+<rect x="550" y="787" width="400" height="72" rx="4" fill="#fff5d6" stroke="#b58b29"/>
+<text x="750" y="815">Stop server, release resources, exit</text>
+<text x="750" y="839">process</text>
+</g>
+</svg>
